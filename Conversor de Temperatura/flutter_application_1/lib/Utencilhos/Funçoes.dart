@@ -3,8 +3,6 @@ import '../Acervo/Acervo.dart';
 import '../Matrix.dart';
 import '../Telas/Screenone.dart';
 
-
-
 //Avança para proxima tela
 void next() {
   controller.nextPage(
@@ -22,8 +20,7 @@ void back() {
   converterSelected = 0;
 }
 
-
-//Sistema de conversor que indentifica quais 
+//Sistema de conversor que indentifica quais
 //opções ficaram indisponiveis
 void converter() {
   switch (selected) {
@@ -45,32 +42,30 @@ void converter() {
   }
 }
 
-//Sistema de conversor que indentifica quais 
+//Sistema de conversor que indentifica quais
 //opções estão disponiveis e converte atualizando o visor
 void process() {
-  if (converterSelected == 0) {
-    if (buttonK == false) {
-      visor = (retorno - 273.15);
-    } else {
-      visor = (retorno - 32) / 1.8;
-    }
-  } else if (converterSelected == 1) {
-    if (buttonC == false) {
-      visor = (retorno + 273.15);
-    } else {
-      visor = ((retorno - 32) * 5) / 9 + 273;
-    }
-  } else if (converterSelected == 2) {
-    if (buttonC == false) {
-      visor = (retorno * 1.8 + 32);
-    } else {
-      visor = (retorno - 273) * 1.8 + 32;
-    }
+  switch (converterSelected) {
+    case 0:
+      if (buttonK == false) {
+        visor = (retorno - 273.15);
+      } else {
+        visor = (retorno - 32) / 1.8;
+      }
+      break;
+    case 1:
+      if (buttonC == false) {
+        visor = (retorno + 273.15);
+      } else {
+        visor = ((retorno - 32) * 5) / 9 + 273;
+      }
+      break;
+    case 2:
+      if (buttonC == false) {
+        visor = (retorno * 1.8 + 32);
+      } else {
+        visor = (retorno - 273) * 1.8 + 32;
+      }
+      break;
   }
 }
-
-
-
-
-
-
