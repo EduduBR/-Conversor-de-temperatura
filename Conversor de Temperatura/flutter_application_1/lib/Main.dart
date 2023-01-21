@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Acervo/Acervo.dart';
+
 import 'package:flutter_application_1/Acervo/Theme.dart';
 import 'package:flutter_application_1/Telas/Screenone.dart';
 import 'package:flutter_application_1/Telas/Screentwo.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Acervo/Cores.dart';
 
 void main() => runApp(const MyConverter());
 
@@ -43,10 +44,10 @@ class _MyConverterState extends State<MyConverter> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           elevation: 30.00,
-          backgroundColor: Cor.green,
+          backgroundColor: Cor.brown,
         ),
         body: PageView(
-            controller: controller, children: const [Bodyone(), Button2()]),
+            controller: controller, children: const [ScreenI(), ScreenII()]),
       ),
     );
   }

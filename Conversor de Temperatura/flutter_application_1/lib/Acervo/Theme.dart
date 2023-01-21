@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Acervo/Acervo.dart';
+import 'Cores.dart';
+
 
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
