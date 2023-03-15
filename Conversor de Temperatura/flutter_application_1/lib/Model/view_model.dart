@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import '../../main.dart';
 
-import '../Main.dart';
-import '../Telas/Screenone.dart';
-import '../Telas/Screentwo.dart';
-import 'ButtonsScreenI.dart';
-import 'Visor.dart';
+class AppView extends ChangeNotifier {
+  final entry = TextEditingController();
 
-class AppView {
+  double visor = 0;
+
+  var buttonK = true;
+  var buttonF = true;
+  var buttonC = true;
+
+  var buttonindex = 0;
   var retorno = 0;
-  var converterSelected = 0;
-
+  var converterindex = 0;
 
   void back() {
     controller.previousPage(
@@ -18,34 +21,28 @@ class AppView {
     buttonF = true;
     buttonC = true;
     visor = 0;
-    converterSelected = 0;
+    converterindex = 0;
   }
 
   void next() {
-    switch (selected) {
+    switch (buttonindex) {
       case 0:
-        retorno = int.parse(entrada.text);
+        retorno = int.parse(entry.text);
         buttonC = false;
-        controller.nextPage(
-            duration: const Duration(microseconds: 300), curve: Curves.ease);
         break;
       case 1:
-        retorno = int.parse(entrada.text);
+        retorno = int.parse(entry.text);
         buttonK = false;
-        controller.nextPage(
-            duration: const Duration(microseconds: 300), curve: Curves.ease);
         break;
       case 2:
-        retorno = int.parse(entrada.text);
+        retorno = int.parse(entry.text);
         buttonF = false;
-        controller.nextPage(
-            duration: const Duration(microseconds: 300), curve: Curves.ease);
         break;
     }
   }
 
   void process() {
-    switch (converterSelected) {
+    switch (converterindex) {
       case 0:
         if (buttonK == false) {
           visor = (retorno - 273.15);
@@ -68,5 +65,6 @@ class AppView {
         }
         break;
     }
+    notifyListeners();
   }
 }

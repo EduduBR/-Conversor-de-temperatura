@@ -1,53 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Acervo/theme.dart';
+import 'package:flutter_application_1/View/screen_one.dart';
+import 'package:flutter_application_1/View/screen_two.dart';
+import 'package:flutter_application_1/Model/view_model.dart';
+import 'package:provider/provider.dart';
 
-import 'package:flutter_application_1/Acervo/Theme.dart';
-import 'package:flutter_application_1/Telas/Screenone.dart';
-import 'package:flutter_application_1/Telas/Screentwo.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'Acervo/Cores.dart';
-
-void main() => runApp(const MyConverter());
-
-final controller = PageController();
-bool isMode = true;
-
-class MyConverter extends StatefulWidget {
-  const MyConverter({super.key});
-
-  @override
-  State<MyConverter> createState() => _MyConverterState();
+void main() {
+  Provider.debugCheckInvalidValueType = null;
+  runApp(const App());
 }
 
-class _MyConverterState extends State<MyConverter> {
+final controller = PageController();
+bool isMode = false;
+
+class App extends StatefulWidget {
+  const App({super.key});
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: isMode ? darkTheme : lightTheme,
-      home: Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: Text('Conversor', style: GoogleFonts.coiny(fontSize: 30)),
-          centerTitle: true,
-          toolbarHeight: 60.2,
-          leading: IconButton(
-            icon: Icon(
-              isMode ? Icons.rocket : Icons.rocket_launch,
-              size: 35,
-            ),
-            onPressed: () {
-              setState(() {
-                isMode ? isMode = false : isMode = true;
-              });
-            },
+    return Provider(
+      create: (context) => AppView(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: isMode ? darkTheme : lightTheme,
+        home: Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            title: const Text('Conversor'),
+            toolbarHeight: 50,
+            elevation: 5,
           ),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          elevation: 30.00,
-          backgroundColor: Cor.brown,
+          drawer: Drawer(
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius:
+                      const BorderRadius.only(topRight: Radius.circular(15)),
+                  child: AppBar(automaticallyImplyLeading: false),
+                ),
+                Card(
+                  elevation: 10,
+                  child: ListTile(
+                    title: Text(isMode ? 'Modo Claro' : 'Modo Escuro'),
+                    leading: Checkbox(
+                      value: isMode,
+                      onChanged: (value) {
+                        setState(() {
+                          isMode ? isMode = false : isMode = true;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          body: PageView(
+              controller: controller,
+              children: const [ScreenOne(), ScreenTwo()]),
         ),
-        body: PageView(
-            controller: controller, children: const [ScreenI(), ScreenII()]),
       ),
     );
   }
