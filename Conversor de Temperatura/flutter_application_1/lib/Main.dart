@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Acervo/theme.dart';
 import 'package:flutter_application_1/View/screen_one.dart';
 import 'package:flutter_application_1/View/screen_two.dart';
 import 'package:flutter_application_1/Model/view_model.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  Provider.debugCheckInvalidValueType = null;
+void main()  {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+     Provider.debugCheckInvalidValueType = null;
   runApp(const App());
+  });
 }
 
 final controller = PageController();
