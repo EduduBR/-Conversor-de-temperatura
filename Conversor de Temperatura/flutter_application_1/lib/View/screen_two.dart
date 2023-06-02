@@ -2,7 +2,6 @@ import 'package:flutter_application_1/Widgets/Buttons/button_two.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Widgets/Card/card_screen_two.dart';
 import 'package:flutter_application_1/Model/view_model.dart';
-import '../Acervo/Colors/color_palette.dart';
 import '../Widgets/visor.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +35,7 @@ class _ScreenTwoState extends State<ScreenTwo> {
             icon: const Icon(
               Icons.arrow_circle_left_outlined,
               size: 50,
-              color: ColorPalette.darkgreen,
+    
             ),
           ),
         ],

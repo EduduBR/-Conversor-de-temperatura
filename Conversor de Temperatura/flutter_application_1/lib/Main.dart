@@ -4,14 +4,15 @@ import 'package:flutter_application_1/Acervo/theme.dart';
 import 'package:flutter_application_1/View/screen_one.dart';
 import 'package:flutter_application_1/View/screen_two.dart';
 import 'package:flutter_application_1/Model/view_model.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-void main()  {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-     Provider.debugCheckInvalidValueType = null;
-  runApp(const App());
+    Provider.debugCheckInvalidValueType = null;
+    runApp(const App());
   });
 }
 
@@ -36,33 +37,24 @@ class _AppState extends State<App> {
         home: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            title: const Text('Conversor'),
+            
+            title: Text('Conversor',
+                style: GoogleFonts.robotoSlab(fontWeight: FontWeight.bold)),
+               
             toolbarHeight: 50,
             elevation: 5,
-          ),
-          drawer: Drawer(
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius:
-                      const BorderRadius.only(topRight: Radius.circular(15)),
-                  child: AppBar(automaticallyImplyLeading: false),
-                ),
-                Card(
-                  elevation: 10,
-                  child: ListTile(
-                    title: Text(isMode ? 'Modo Claro' : 'Modo Escuro'),
-                    leading: Checkbox(
-                      value: isMode,
-                      onChanged: (value) {
-                        setState(() {
-                          isMode ? isMode = false : isMode = true;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-              ],
+            centerTitle: true,
+            leading: IconButton(
+              onPressed: () {
+                setState(() {
+                  isMode ? isMode = false : isMode = true;
+                });
+              },
+              icon: Icon(
+                Icons.lightbulb_outlined,
+                size: 35,
+                color: isMode ? Colors.grey.shade300 : Colors.amber.shade200,
+              ),
             ),
           ),
           body: PageView(

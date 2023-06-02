@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../Acervo/Colors/color_palette.dart';
 import 'package:provider/provider.dart';
 
 import '../../Model/view_model.dart';
@@ -32,9 +31,8 @@ class ButtonsTwo extends StatelessWidget {
               child: Text(
                 buttontext[index],
                 style: TextStyle(
-                    color: index != Provider.of<AppView>(context).buttonindex
-                        ? ColorPalette.darkgreen
-                        : ColorPalette.darkgreen,
+                    // color: index != Provider.of<AppView>(context).buttonindex
+                      
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
