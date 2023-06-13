@@ -27,7 +27,7 @@ class Scheme {
   onSurfaceVariant: Color(0xFF4F4539),
   outline: Color(0xFF817567),
   onInverseSurface: Color(0xFFE9FA86),
-  inverseSurface: Color(0xFF2D3400),
+  inverseSurface: Color(0xFF815600),
   inversePrimary: Color(0xFFFEBA4B),
   shadow: Color(0xFF000000),
   surfaceTint: Color(0xFF815600),

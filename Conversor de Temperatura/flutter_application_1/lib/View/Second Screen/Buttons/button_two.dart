@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
-import '../../Model/view_model.dart';
+import '../../../Model/model.dart';
+import '../../../Utils/Globals/count_globals.dart';
 
 class ButtonsTwo extends StatelessWidget {
   ButtonsTwo({super.key});
@@ -21,20 +22,15 @@ class ButtonsTwo extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(80, 0, 80, 0),
             margin: const EdgeInsets.all(20),
             child: ElevatedButton(
-              onPressed: index != Provider.of<AppView>(context).buttonindex
+              onPressed: index != CountGlobals.selectType
                   ? () {
-                      Provider.of<AppView>(context, listen: false).process();
-                      Provider.of<AppView>(context, listen: false)
-                          .converterindex = index;
+                      CountGlobals.processIndex = index;
+                      Provider.of<Functions>(context, listen: false).process();
                     }
                   : null,
               child: Text(
                 buttontext[index],
-                style: TextStyle(
-                    // color: index != Provider.of<AppView>(context).buttonindex
-                      
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                style: GoogleFonts.vollkorn(fontSize: 25),
               ),
             ),
           );

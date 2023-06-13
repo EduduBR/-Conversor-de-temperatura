@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class MyTextField extends StatelessWidget {
@@ -14,19 +15,21 @@ class MyTextField extends StatelessWidget {
       controller: controlador,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
+        labelStyle:  GoogleFonts.vollkorn(fontSize: 23),
         labelText: 'Temperatura',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(40),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Color(0xfffffd259),
+          borderSide:  BorderSide(
+            color: Theme.of(context).colorScheme.inverseSurface,
             width: 3,
           ),
           borderRadius: BorderRadius.circular(40),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
+            // ignore: use_full_hex_values_for_flutter_colors
             color: Color(0xffffa9712c),
             width: 3,
           ),
